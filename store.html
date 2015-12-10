@@ -7,17 +7,18 @@
   <div class= "row">
     <h1>The UK's biggest Tessel Store</h1>
     <div ng-controller="ItemsCtrl">
+      <input ng-model='itemBody' class='form-control'/>
       <button ng-click='addItem()' class="button">Add Item</a></button>
-    <ul class='list-group'>
-      <li class-'list-group-item'>
-        <strong>Best deals in town</strong>
-        <span>Fun for all the geeks</span>
-      </li>
-      <li ng-repeat='item in items' class-'list-group-item'>
-        {{item.model}}
-        <span>{{item.body}}</span>
-        <span>{{item.price}}</span>
-    </ul>
+        <ul class='list-group'>
+          <li class-'list-group-item'>
+            <strong>Best deals in town</strong>
+            <span>Fun for all the geeks</span>
+          </li>
+          <li ng-repeat='item in items' class-'list-group-item'>
+            {{item.model}}
+            <span>{{item.body}}</span>
+            <span>{{item.price}}</span>
+        </ul>
 
     </div>
   </div>
@@ -41,7 +42,7 @@
       $scope.addItem = function(){
         $scope.items.unshift({
           model:'tessel3',
-          body: 'And another item - just cheaper',
+          body: $scope.itemBody,
           price: 19.99
 
         })
