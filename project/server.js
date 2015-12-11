@@ -1,7 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var Item = require('./models/items.js');
 
-var app = express()
+var app = express();
 app.use(bodyParser.json())
 
 app.get('/api/items', function(req,res){
@@ -15,12 +16,27 @@ app.get('/api/items', function(req,res){
   ])
 })
 
-app.post('/api/items', function(req,res){
-  console.log('Item received');
-  console.log(req.body.model);
-  console.log(req.body.body);
-  console.log(req.body.price);
-  res.send(201)
+app.post('/api/items', function(req,res,next){
+  console.log(req.body);
+  var item = new Item({
+    model: req.body.model,
+    body: req.body.body,
+    price: req.body.price
+
+  });
+  item.save(function(err,resp) {
+       if(err) {
+           console.log(err);
+           res.send({
+               message :'something went wrong'
+           });
+       } else {
+           res.send({
+               message:'the appointment has bees saved'
+           });
+       }           
+
+   });
 
 });
 
