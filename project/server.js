@@ -19,6 +19,7 @@ app.post('/api/items', function(req,res){
   console.log('Item received');
   console.log(req.body.model);
   console.log(req.body.body);
+  console.log(req.body.price);
   res.send(201)
 
 });
