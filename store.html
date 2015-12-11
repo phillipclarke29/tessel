@@ -27,6 +27,16 @@
      var app = angular.module('app', [])
      app.controller('ItemsCtrl', function ($scope) {
 
+       $scope.addItem = function(){
+         $scope.items.unshift({
+           model:'tessel3',
+           body: $scope.itemBody,
+           price: 19.99
+
+         })
+
+       }
+
        $scope.items = [
          {
            model: 'tessel1',
@@ -39,15 +49,6 @@
            price: 29.99
          }
        ]
-      $scope.addItem = function(){
-        $scope.items.unshift({
-          model:'tessel3',
-          body: $scope.itemBody,
-          price: 19.99
-
-        })
-
-      };
      })
    </script>
  </body>
