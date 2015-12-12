@@ -16,12 +16,12 @@ app.get('/api/items', function(req,res){
   ])
 })
 
-app.post('/api/items', function(req,res,next){
+app.post('/api/items', function(req, res, next){
   console.log(req.body);
   var item = new Item({
-    model: req.body.model,
-    body: req.body.body,
-    price: req.body.price
+    model: "req.body.model",
+    body: "req.body.body",
+    price: 19
 
   });
   item.save(function(err,resp) {
@@ -32,9 +32,9 @@ app.post('/api/items', function(req,res,next){
            });
        } else {
            res.send({
-               message:'the appointment has bees saved'
+               message:'the appointment has been saved'
            });
-       }           
+       }
 
    });
 
