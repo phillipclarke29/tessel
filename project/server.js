@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var Item = require('./models/item');
 
 var app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
 app.get('/api/items', function(req,res){
