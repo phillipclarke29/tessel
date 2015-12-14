@@ -29,22 +29,22 @@
 
        $scope.addItem = function(){
          if($scope.itemBody){
-          $scope.items.unshift({
-            model:'tessel3',
-            body: $scope.itemBody,
-            price: 19.99
+          $http.post('/api/items', {
+            model: 'tessel',
+            body: 'here is a body',
+            price: 21
+          }).success(function(item){
+            $scope.items.unshift(item)
+            $scope.itemBody = null
           })
-          .success(function (itemBody) {             $scope.items.unshift(post)
-             $scope.itemBody = null
-              })
-            }
-          }
+        }
+      }
 
         $http.get('http://localhost:3000/api/items')
           .success(function (items) {
             $scope.items = items
           })
-        })
+    })
    </script>
  </body>
 </html>
