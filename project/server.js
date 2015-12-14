@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var Item = require('./models/items.js');
+var Item = require('./models/item');
 
 var app = express();
 app.use(bodyParser.json())
@@ -19,9 +19,9 @@ app.get('/api/items', function(req,res){
 app.post('/api/items', function(req, res, next){
   console.log(req.body);
   var item = new Item({
-    model: "req.body.model",
-    body: "req.body.body",
-    price: 19
+    model: req.body.model,
+    body: req.body.body,
+    price: req.body.price
 
   });
   item.save(function(err,resp) {
