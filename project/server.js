@@ -5,16 +5,12 @@ var Item = require('./models/items.js');
 var app = express();
 app.use(bodyParser.json())
 
-app.get('/api/items', function(req,res){
-  res.json([
-    {
-      model: 'tessel1',
-      body: 'Very cool item',
-      price: 19.99
-    }
-
-  ])
-})
+app.get('/api/items', function(req,res, next){
+  Item.find(function(err, items){
+    if(err) {return next(err)}
+    res.json(items)
+  })
+});
 
 app.post('/api/items', function(req, res, next){
   console.log(req.body);
