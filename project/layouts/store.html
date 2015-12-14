@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.min.css">
+<head>
+<body ng-app='app'>
+  <div class= "row">
+    <h1>The UK's biggest Tessel Store</h1>
+    <div ng-controller="ItemsCtrl">
+      <input ng-model='itemBody' class='form-control'/>
+      <button ng-click='addItem()' class="button">Add Item</a></button>
+        <ul class='list-group'>
+          <li class-'list-group-item'>
+            <strong>Best deals in town</strong>
+            <span>Fun for all the geeks</span>
+          </li>
+          <li ng-repeat='item in items' class-'list-group-item'>
+            {{item.model}}
+            <span>{{item.body}}</span>
+            <span>{{item.price}}</span>
+        </ul>
+
+    </div>
+  </div>
+  <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.js'></script>
+   <script>
+    var app = angular.module('app', [])
+     app.controller('ItemsCtrl', function ($scope, $http) {
+
+       $scope.addItem = function(){
+         if($scope.itemBody){
+          $scope.items.unshift({
+            model:'tessel3',
+            body: $scope.itemBody,
+            price: 19.99
+          })
+          .success(function (itemBody) {             $scope.items.unshift(post)
+             $scope.itemBody = null
+              })
+            }
+          }
+
+        $http.get('http://localhost:3000/api/items')
+          .success(function (items) {
+            $scope.items = items
+          })
+        })
+   </script>
+ </body>
+</html>

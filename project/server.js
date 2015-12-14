@@ -6,6 +6,12 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
+app.get('/', function(req,res){
+  res.sendfile('layouts/store.html')
+});
+
+
+
 app.get('/api/items', function(req,res, next){
   Item.find(function(err, items){
     if(err) {return next(err)}
