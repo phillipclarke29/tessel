@@ -4,7 +4,8 @@ var Item = require('./models/item');
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
 
 app.get('/', function(req,res){
   res.sendfile('layouts/store.html')
@@ -20,13 +21,12 @@ app.get('/api/items', function(req,res, next){
 });
 
 app.post('/api/items', function(req, res, next){
-  console.log(res.body);
+  console.log(res);
   var item = new Item({
     model: req.body.model,
     body: req.body.body,
-    body: req.body.ID,
-    price: req.body.price
-
+    price: req.body.price,
+    mid: req.body.MID
   });
   item.save(function(err,resp) {
        if(err) {
@@ -38,6 +38,7 @@ app.post('/api/items', function(req, res, next){
            res.send({
                message:'the item has been saved'
            });
+
        }
 
    });
