@@ -34,7 +34,6 @@
 
        $scope.addItem = function(){
          if($scope.itemBody){
-           console.log($scope.itemBody);
           $http.post('/api/items', {
             model: $scope.itemModel,
             body: $scope.itemBody,
