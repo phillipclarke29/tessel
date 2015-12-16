@@ -7,7 +7,14 @@
   <div class= "row">
     <h1>The UK's biggest Tessel Store</h1>
     <div ng-controller="ItemsCtrl">
-      <input ng-model='itemBody' class='form-control'/>
+      <input ng-model='itemID' class='form-control' placeholder="ID"/>
+      <br>
+      <input ng-model='itemBody' class='form-control' placeholder="Body"/>
+      <br>
+      <input ng-model='itemModel' class='form-control' placeholder="Model"/>
+      <br>
+      <input ng-model='itemPrice' class='form-control' placeholder="Price"/>
+
       <button ng-click='addItem()' class="button">Add Item</a></button>
         <ul class='list-group'>
           <li class-'list-group-item'>
@@ -15,7 +22,7 @@
             <span>Fun for all the geeks</span>
           </li>
           <li ng-repeat='item in items' class-'list-group-item'>
-            {{item.model}}
+            {{item.model}} {{item.ID}}
             <span>{{item.body}}</span>
             <span>{{item.price}}</span>
         </ul>
@@ -29,11 +36,11 @@
 
        $scope.addItem = function(){
          if($scope.itemBody){
-           console.log($scope.itemBody);
           $http.post('/api/items', {
-            model: 'tessssssel',
+            model: $scope.itemModel,
+             model: $scope.itemID,
             body: $scope.itemBody,
-            price: 23
+            price: $scope.itemPrice
           }).success(function(item){
             $scope.items.unshift(item)
             // $scope.itemBody = null
@@ -48,34 +55,5 @@
     })
    </script>
 
-   <div ng-controller="ItemsCtrl">
-  <form novalidate class="simple-form">
-    Name: <input type="text" ng-model="user.name" /><br />
-    E-mail: <input type="email" ng-model="user.email" /><br />
-    Gender: <input type="radio" ng-model="user.gender" value="male" />male
-    <input type="radio" ng-model="user.gender" value="female" />female<br />
-    <input type="button" ng-click="reset()" value="Reset" />
-    <input type="submit" ng-click="update(user)" value="Save" />
-  </form>
-  <pre>user = {{user | json}}</pre>
-  <pre>master = {{master | json}}</pre>
-</div>
-
-<script>
-  angular.module('formExample', [])
-    .controller('ExampleController', ['$scope', function($scope) {
-      $scope.master = {};
-
-      $scope.update = function(user) {
-        $scope.master = angular.copy(user);
-      };
-
-      $scope.reset = function() {
-        $scope.user = angular.copy($scope.master);
-      };
-
-      $scope.reset();
-    }]);
-</script>
  </body>
 </html>

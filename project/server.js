@@ -20,10 +20,11 @@ app.get('/api/items', function(req,res, next){
 });
 
 app.post('/api/items', function(req, res, next){
-  console.log(req.body);
+  console.log(res.body);
   var item = new Item({
     model: req.body.model,
     body: req.body.body,
+    body: req.body.ID,
     price: req.body.price
 
   });
@@ -35,7 +36,7 @@ app.post('/api/items', function(req, res, next){
            });
        } else {
            res.send({
-               message:'the appointment has been saved'
+               message:'the item has been saved'
            });
        }
 
