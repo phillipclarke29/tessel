@@ -24,6 +24,7 @@ app.post('/api/items', function(req, res, next){
   var item = new Item({
     model: req.body.model,
     body: req.body.body,
+    body: req.body.ID,
     price: req.body.price
 
   });

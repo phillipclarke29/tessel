@@ -7,6 +7,8 @@
   <div class= "row">
     <h1>The UK's biggest Tessel Store</h1>
     <div ng-controller="ItemsCtrl">
+      <input ng-model='itemID' class='form-control' placeholder="ID"/>
+      <br>
       <input ng-model='itemBody' class='form-control' placeholder="Body"/>
       <br>
       <input ng-model='itemModel' class='form-control' placeholder="Model"/>
@@ -20,7 +22,7 @@
             <span>Fun for all the geeks</span>
           </li>
           <li ng-repeat='item in items' class-'list-group-item'>
-            {{item.model}}
+            {{item.model}} {{item.ID}}
             <span>{{item.body}}</span>
             <span>{{item.price}}</span>
         </ul>
@@ -36,6 +38,7 @@
          if($scope.itemBody){
           $http.post('/api/items', {
             model: $scope.itemModel,
+             model: $scope.itemID,
             body: $scope.itemBody,
             price: $scope.itemPrice
           }).success(function(item){
