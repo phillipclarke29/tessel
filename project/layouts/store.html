@@ -7,13 +7,7 @@
   <div class= "row">
     <h1>The UK's biggest Tessel Store</h1>
     <div ng-controller="ItemsCtrl">
-      <ng-model="itemImage" action="/upload" enctype="multipart/form-data">
-              <div class="field">
-                  <label for="image">Image Upload</label>
-                  <input type="file" name="image" id="image">
-              </div>
-              <input type="submit" class="btn" value="Save">
-          </form>
+
       <input ng-model='itemBody' class='form-control' placeholder="Body"/>
       <br>
       <input ng-model='itemModel' class='form-control' placeholder="Model"/>
@@ -28,10 +22,12 @@
             <strong>Best deals in town</strong>
             <span>Fun for all the geeks</span>
           </li>
-          <li ng-repeat='item in items' class-'list-group-item'>
-            {{item.model}}
-            <span>{{item.body}}</span>
-            <span>{{item.price}}</span>
+          <li ng-repeat="item in items | orderBy:'-price'" class-'list-group-item'>
+
+            <td>{{ item.model }} {{item.modelID}}</td>
+            <td>{{item.body}}</td>
+            <td>{{item.price}}</td>
+
         </ul>
 
     </div>
