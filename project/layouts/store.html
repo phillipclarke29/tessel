@@ -36,9 +36,9 @@
          if($scope.itemBody){
            console.log($scope.itemBody);
           $http.post('/api/items', {
-            model: 'tessssssel',
+            model: $scope.itemModel,
             body: $scope.itemBody,
-            price: 23
+            price: $scope.itemPrice
           }).success(function(item){
             $scope.items.unshift(item)
             // $scope.itemBody = null
