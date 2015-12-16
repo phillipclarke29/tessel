@@ -2,7 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var Item = require('./models/item');
 
+
 var app = express();
+// app.use('/api/items', require('./controllers/api/items'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -13,8 +15,8 @@ app.get('/', function(req,res){
 
 app.get('/api/items', function(req,res, next){
   Item.find(function(err, items){
-    if(err) {return next(err)}
-    res.json(items)
+   if(err) {return next(err)}
+   res.json(items)
   })
 });
 
