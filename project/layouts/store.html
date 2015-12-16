@@ -7,7 +7,12 @@
   <div class= "row">
     <h1>The UK's biggest Tessel Store</h1>
     <div ng-controller="ItemsCtrl">
-      <input ng-model='itemBody' class='form-control'/>
+      <input ng-model='itemBody' class='form-control' placeholder="Body"/>
+      <br>
+      <input ng-model='itemModel' class='form-control' placeholder="Model"/>
+      <br>
+      <input ng-model='itemPrice' class='form-control' placeholder="Price"/>
+
       <button ng-click='addItem()' class="button">Add Item</a></button>
         <ul class='list-group'>
           <li class-'list-group-item'>
