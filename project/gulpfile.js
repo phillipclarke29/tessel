@@ -9,3 +9,7 @@ gulp.task('scripts', function() {
   .pipe(uglify())
   .pipe(gulp.dest('./assets/'));
 });
+gulp.task('watch:scripts',['scripts'],function(){
+  gulp.watch('./ng/*.js',['scripts'])
+
+})
