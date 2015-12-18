@@ -3,7 +3,7 @@ var app = angular.module('app', []);
 
    $scope.addItem = function(){
      if($scope.itemBody){
-      $http.post('/api/items', {
+    ItemsSvc.create({
         model: $scope.itemModel,
         MID: $scope.itemMID,
         body: $scope.itemBody,
@@ -30,7 +30,12 @@ var app = angular.module('app', []);
  app.service('ItemsSvc', function($http){
    this.fetch = function (){
 
-     return $http.get('api/items')
+     return $http.get('api/items');
 
    };
+
+    this.create = function(item) {
+      return $http.post('/api/items', item);
+
+    };
  });
