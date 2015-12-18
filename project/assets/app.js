@@ -1,5 +1,5 @@
 var app = angular.module('app', []);
- app.controller('ItemsCtrl', function ($scope, $http) {
+ app.controller('ItemsCtrl', function ($scope, ItemsSvc) {
 
    $scope.addItem = function(){
      if($scope.itemBody){
@@ -19,8 +19,18 @@ var app = angular.module('app', []);
     }
   }
 
-    $http.get('http://localhost:3000/api/items')
-      .success(function (items) {
-        $scope.items = items
-      })
+  ItemsSvc.fetch().success(function (items){
+
+    $scope.items = items;
+
+  })
 });
+
+
+ app.service('ItemsSvc', function($http){
+   this.fetch = function (){
+
+     return $http.get('api/items')
+
+   };
+ });
