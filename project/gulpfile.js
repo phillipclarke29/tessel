@@ -23,9 +23,9 @@ gulp.task('watch:scripts', ['scripts'], function() {
 gulp.task('sass', function() {
   gulp.src('./sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./assets/stylesheets/'));
+    .pipe(gulp.dest('assets/stylesheets/'));
 });
 
-gulp.task('sass:watch', function() {
+gulp.task('watch:sass', ['sass'], function() {
   gulp.watch('./sass/**/*.scss', ['sass']);
 });

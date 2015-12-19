@@ -1,6 +1,5 @@
 app.service('ItemsSvc', function($http){
    this.fetch = function (){
-     console.error('this is an error')
 
      return $http.get('api/items');
    };
