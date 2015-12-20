@@ -15,10 +15,6 @@ gulp.task('scripts', function() {
   .pipe(gulp.dest('./assets/'));
 });
 
-gulp.task('watch:scripts', ['scripts'], function() {
-  gulp.watch('./ng/*.js', ['scripts']);
-
-});
 
 gulp.task('sass', function() {
   gulp.src('./sass/**/*.scss')
@@ -26,6 +22,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('assets/stylesheets/'));
 });
 
-gulp.task('watch:sass', ['sass'], function() {
+gulp.task('watch', function() {
+  gulp.watch('./ng/*.js', ['scripts']);
   gulp.watch('./sass/**/*.scss', ['sass']);
 });
