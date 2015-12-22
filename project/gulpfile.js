@@ -19,7 +19,7 @@ gulp.task('scripts', function() {
   .pipe(gulp.dest('./assets/'));
 });
 
-gulp.task('dev', ['watch:scripts', 'watch:sass']);
+gulp.task('dev', ['watch:scripts', 'watch:sass', 'dev:server']);
 
 gulp.task('watch:scripts', ['scripts'], function() {
   gulp.watch('./ng/*.js', ['scripts']);
