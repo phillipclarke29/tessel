@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use('/', routes);
 
 app.get('/', function(req,res){
-  res.sendfile('layouts/store.html')
+  res.sendfile('layouts/app.html')
 });
 
 app.listen(3000, function(){
