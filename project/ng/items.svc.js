@@ -1,6 +1,6 @@
 app.service('ItemsSvc', function($http){
    this.fetch = function (){
-console.log('hellowrold')
+console.log('hello world world world')
      return $http.get('api/items');
    };
 

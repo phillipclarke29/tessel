@@ -1,4 +1,8 @@
 var gulp = require('gulp');
+var fs = require('fs');
+fs.readdirSync(__dirname + '/gulp').forEach(function (task){
+ require('./gulp/' + task)
+})
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
@@ -15,14 +19,17 @@ gulp.task('scripts', function() {
   .pipe(gulp.dest('./assets/'));
 });
 
+//
+// gulp.task('sass', function() {
+//   gulp.src('./sass/**/*.scss')
+//     .pipe(sass().on('error', sass.logError))
+//     .pipe(gulp.dest('assets/stylesheets/'));
+// });
 
-gulp.task('sass', function() {
-  gulp.src('./sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('assets/stylesheets/'));
+gulp.task('watch:scripts', ['scripts'], function() {
+  gulp.watch('./ng/*.js', ['scripts']);
 });
 
-gulp.task('watch', function() {
-  gulp.watch('./ng/*.js', ['scripts']);
-  gulp.watch('./sass/**/*.scss', ['sass']);
+gulp.task('watch:sass', ['sass'], function() {
+  gulp.watch('./sass/*.scss', ['scripts']);
 });
