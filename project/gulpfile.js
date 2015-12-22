@@ -19,12 +19,7 @@ gulp.task('scripts', function() {
   .pipe(gulp.dest('./assets/'));
 });
 
-//
-// gulp.task('sass', function() {
-//   gulp.src('./sass/**/*.scss')
-//     .pipe(sass().on('error', sass.logError))
-//     .pipe(gulp.dest('assets/stylesheets/'));
-// });
+gulp.task('dev', ['watch:scripts', 'watch:sass']);
 
 gulp.task('watch:scripts', ['scripts'], function() {
   gulp.watch('./ng/*.js', ['scripts']);
