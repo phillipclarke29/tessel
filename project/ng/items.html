@@ -1,0 +1,28 @@
+<div class= "row">
+  <h1>The UK's biggest Tessel Store</h1>
+  
+
+    <input ng-model='itemBody' class='form-control' placeholder="Body"/>
+    <br>
+    <input ng-model='itemModel' class='form-control' placeholder="Model"/>
+    <br>
+    <input ng-model='itemMID' class='form-control' placeholder="MID"/>
+    <br>
+    <input ng-model='itemPrice' class='form-control' placeholder="Price"/>
+
+    <button ng-click='addItem()' class="button">Add Item</a></button>
+      <ul class='list-group'>
+        <li class-'list-group-item'>
+          <strong>Best deals in town</strong>
+          <span>Fun for all the geeks</span>
+        </li>
+        <li ng-repeat="item in items | orderBy:'-price'" class-'list-group-item'>
+
+          <td>{{ item.model }} {{item.MID}}<td>
+          <td>{{item.body}}</td>
+          <td>{{item.price}}</td>
+
+      </ul>
+
+  </div>
+</div>
