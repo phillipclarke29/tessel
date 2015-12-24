@@ -2,8 +2,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var routes = require('./controllers/api/items');
 var router = express.Router();
+fs = require('fs');
 
 var app = express();
+
+app.use(express.static(__dirname + '/layouts'));
+app.set('view engine', 'html');
 app.use(express.static(__dirname + '/assets'));
 
 app.use(bodyParser.urlencoded({ extended: true }));

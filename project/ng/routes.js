@@ -2,7 +2,7 @@ angular.module('app')
   .config(function ($routeProvider) {
   $routeProvider
   .when('/', {
-                 templateUrl : 'items.html',
+                 templateUrl : 'http://localhost:3000/items.html',
                  controller  : 'ItemsCtrl'
              })
 });
